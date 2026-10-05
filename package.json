@@ -1,0 +1,13 @@
+{
+  "name": "wcc-qr-event-checkin",
+  "version": "1.0.0",
+  "description": "A real-time QR Event Check-In System built with HTML, CSS, JavaScript, and Supabase.",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.3"
+  },
+  "author": "Parth",
+  "license": "MIT"
+}
