@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Event | QR Event Operations</title>
+    <link rel="stylesheet" href="css/style.css?v=festival2026">
+</head>
+
+<body>
+
+    <!-- ================= LIVE EVENT TICKER RIBBON (SLIDING RIGHT TO LEFT) ================= -->
+    <div class="event-ticker-bar" aria-label="Live Ongoing Events">
+        <div class="ticker-live-tag">
+            <span class="ticker-pulse-dot"></span> LIVE EVENTS
+        </div>
+        <div class="ticker-track-wrapper">
+            <div class="ticker-track">
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> INNOVEX Hackathon 2026 — 36H Sprint Active (Main Campus Auditorium)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> NextGen AI &amp; ML Summit — Keynotes Starting 10:30 AM (Hall B)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> CyberShield Security Conclave — Ethical Hacking &amp; CTF Drills</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> PixelCraft UX/UI Design Sprint — Workshop Registration Open</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge checkin">CHECK-IN</strong> Gate Desk Active — Fast QR Verification via Supabase</span>
+                <span class="ticker-separator">✦</span>
+                <!-- Duplicate for seamless infinite loop -->
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> INNOVEX Hackathon 2026 — 36H Sprint Active (Main Campus Auditorium)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> NextGen AI &amp; ML Summit — Keynotes Starting 10:30 AM (Hall B)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> CyberShield Security Conclave — Ethical Hacking &amp; CTF Drills</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> PixelCraft UX/UI Design Sprint — Workshop Registration Open</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge checkin">CHECK-IN</strong> Gate Desk Active — Fast QR Verification via Supabase</span>
+                <span class="ticker-separator">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MEMPHIS CORNER DECOR ================= -->
+    <div class="memphis-decor" aria-hidden="true">
+        <div class="decor-top-left">
+            <div class="decor-tl-bar"></div>
+            <div class="decor-tl-square"></div>
+        </div>
+        <div class="decor-top-right">
+            <div class="decor-tr-circle"></div>
+            <div class="decor-tr-bar"></div>
+            <div class="decor-tr-square"></div>
+        </div>
+        <div class="decor-bottom-left"></div>
+        <div class="decor-bottom-right">
+            <div class="decor-br-triangle"></div>
+            <div class="decor-br-rect"></div>
+        </div>
+    </div>
+
+    <!-- ================= HEADER (NO ADMIN LINK) ================= -->
+    <header class="main-header">
+        <div class="brand-header-flex">
+            <img src="images/logo.png" alt="QR Event Check-In Logo" class="brand-logo-img">
+            <div>
+                <h1>Create New Event</h1>
+                <p>Event Launch &amp; Gate Setup</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html" class="home-btn">← Back to Events</a>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN CONTAINER ================= -->
+    <main class="registration-container" style="max-width: 860px;">
+
+        <!-- HERO HEADER -->
+        <section class="section-heading" style="text-align: center; margin-bottom: 25px;">
+            <span class="badge badge-pulse">
+                <span class="pulse-dot"></span> NEW EVENT CREATOR
+            </span>
+            <h2><span class="gradient-text">Publish an Event</span> &amp; Activate Gates</h2>
+            <p>Define event credentials, set a custom gate passcode, configure unique QR pass prefixes, and immediately start accepting registrations.</p>
+        </section>
+
+        <!-- ERROR / SUCCESS BOXES -->
+        <div id="addEventErrorBox" class="message error" style="display: none;"></div>
+        <div id="addEventSuccessBox" class="success-box" style="display: none; margin-bottom: 30px;">
+            <div class="success-header">
+                <div class="success-icon">✓</div>
+                <h3>Event Successfully Launched!</h3>
+                <p id="createdEventSummary">Your event has been activated with its dedicated gate scanner &amp; registration pass generator.</p>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.04); border-radius: 12px; padding: 18px; margin: 20px 0; display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 8px;">
+                    <span style="font-weight: 600; color: var(--color-navy);">Gate Admin Passcode:</span>
+                    <code id="createdPasscodeBadge" style="font-size: 1rem; color: var(--color-blue); font-weight: 700;"></code>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 600; color: var(--color-navy);">Ticket ID Prefix:</span>
+                    <span id="createdPrefixBadge" style="font-size: 1rem; color: var(--color-sea-green); font-weight: 800;"></span>
+                </div>
+            </div>
+
+            <div class="success-actions" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <a id="viewRegBtn" href="#" class="primary-btn" style="flex: 1; min-width: 200px; text-align: center;">🎟️ Open Registration Pass</a>
+                <a id="viewAdminBtn" href="#" class="secondary-btn" style="flex: 1; min-width: 200px; text-align: center;">🛡️ Enter Gate Admin Scanner</a>
+                <a href="index.html" class="home-btn" style="flex: 1; min-width: 150px; text-align: center;">🏠 All Events</a>
+            </div>
+        </div>
+
+        <!-- FORM CARD -->
+        <section class="registration-card" id="addEventCard" style="border-color: var(--color-blue);">
+
+            <form id="createEventForm">
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <!-- EVENT TITLE -->
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="eventTitleInput">Event Title *</label>
+                        <input
+                            type="text"
+                            id="eventTitleInput"
+                            placeholder="e.g. RoboWars National Robotics Championship 2026"
+                            required
+                        >
+                    </div>
+
+                    <!-- CATEGORY -->
+                    <div class="form-group">
+                        <label for="eventCategoryInput">Event Category *</label>
+                        <select id="eventCategoryInput" required>
+                            <option value="Hackathon">⚡ Hackathon</option>
+                            <option value="Conference">🧠 Conference / Summit</option>
+                            <option value="Workshop">🛡️ Workshop / Bootcamp</option>
+                            <option value="Design">🎨 Design Sprint / UX</option>
+                            <option value="Esports">🎮 Esports / Gaming</option>
+                            <option value="Cultural">🎉 Tech Fest / Cultural</option>
+                        </select>
+                    </div>
+
+                    <!-- TICKET PREFIX -->
+                    <div class="form-group">
+                        <label for="eventPrefixInput">Ticket Prefix (3-6 chars) *</label>
+                        <input
+                            type="text"
+                            id="eventPrefixInput"
+                            placeholder="e.g. ROBO, CLASH, TECH"
+                            maxlength="6"
+                            style="text-transform: uppercase; font-weight: 700; letter-spacing: 1px;"
+                            required
+                        >
+                        <small style="color: var(--color-dark-gray); font-size: 0.78rem;">Used on badges: e.g. <code>ROBO-001</code></small>
+                    </div>
+
+                    <!-- ADMIN PASSCODE -->
+                    <div class="form-group">
+                        <label for="eventPasscodeInput">Gate Admin Passcode *</label>
+                        <input
+                            type="text"
+                            id="eventPasscodeInput"
+                            placeholder="e.g. robo2026"
+                            required
+                        >
+                        <small style="color: var(--color-dark-gray); font-size: 0.78rem;">Required for this event's gate scanner login</small>
+                    </div>
+
+                    <!-- EXPECTED CAPACITY -->
+                    <div class="form-group">
+                        <label for="eventCapacityInput">Capacity (Attendees) *</label>
+                        <input
+                            type="text"
+                            id="eventCapacityInput"
+                            placeholder="e.g. 250 Participants"
+                            required
+                        >
+                    </div>
+
+                    <!-- DATE -->
+                    <div class="form-group">
+                        <label for="eventDateInput">Event Date *</label>
+                        <input
+                            type="text"
+                            id="eventDateInput"
+                            placeholder="e.g. May 10-11, 2026"
+                            required
+                        >
+                    </div>
+
+                    <!-- TIME -->
+                    <div class="form-group">
+                        <label for="eventTimeInput">Starting Time *</label>
+                        <input
+                            type="text"
+                            id="eventTimeInput"
+                            placeholder="e.g. 09:30 AM IST"
+                            required
+                        >
+                    </div>
+
+                    <!-- VENUE -->
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="eventVenueInput">Venue &amp; Hall *</label>
+                        <input
+                            type="text"
+                            id="eventVenueInput"
+                            placeholder="e.g. Innovation Complex, Main Auditorium"
+                            required
+                        >
+                    </div>
+
+                    <!-- COLOR THEME -->
+                    <div class="form-group">
+                        <label for="eventColorInput">Theme Color</label>
+                        <select id="eventColorInput">
+                            <option value="#3F66B5" selected>Electric Blue</option>
+                            <option value="#2BA384">Emerald Sea Green</option>
+                            <option value="#C93C5E">Raspberry Sunset</option>
+                            <option value="#E9B431">Gold Amber</option>
+                            <option value="#7C3AED">Cyber Violet</option>
+                            <option value="#06B6D4">Neon Cyan</option>
+                        </select>
+                    </div>
+
+                    <!-- ICON -->
+                    <div class="form-group">
+                        <label for="eventIconInput">Event Icon</label>
+                        <select id="eventIconInput">
+                            <option value="💻" selected>💻 Tech / Coding</option>
+                            <option value="🧠">🧠 AI / Brain</option>
+                            <option value="🛡️">🛡️ Security Shield</option>
+                            <option value="🎨">🎨 Design Palette</option>
+                            <option value="🚀">🚀 Rocket / Launch</option>
+                            <option value="🎮">🎮 Gaming Controller</option>
+                            <option value="🤖">🤖 Robot</option>
+                            <option value="⚡">⚡ Lightning Bolt</option>
+                        </select>
+                    </div>
+
+                    <!-- DESCRIPTION -->
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="eventDescInput">Event Description</label>
+                        <textarea
+                            id="eventDescInput"
+                            rows="3"
+                            placeholder="Briefly describe the theme, tracks, or keynote topics..."
+                            style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid var(--color-light-gray); font-family: inherit; font-size: 0.95rem; resize: vertical;"
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <button type="submit" class="primary-btn" style="width: 100%; padding: 14px; font-size: 1.05rem; margin-top: 15px;">
+                    ✨ Publish Event &amp; Launch Gate System →
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 QR Event Check-In System • Dynamic Multi-Event Management</p>
+    </footer>
+
+    <!-- ADD EVENT SCRIPT -->
+    <script type="module">
+        import { saveCustomEvent } from "./js/events.js";
+
+        const titleInput = document.getElementById("eventTitleInput");
+        const categoryInput = document.getElementById("eventCategoryInput");
+        const prefixInput = document.getElementById("eventPrefixInput");
+        const passcodeInput = document.getElementById("eventPasscodeInput");
+        const capacityInput = document.getElementById("eventCapacityInput");
+        const dateInput = document.getElementById("eventDateInput");
+        const timeInput = document.getElementById("eventTimeInput");
+        const venueInput = document.getElementById("eventVenueInput");
+        const colorInput = document.getElementById("eventColorInput");
+        const iconInput = document.getElementById("eventIconInput");
+        const descInput = document.getElementById("eventDescInput");
+        const form = document.getElementById("createEventForm");
+        const errorBox = document.getElementById("addEventErrorBox");
+        const successBox = document.getElementById("addEventSuccessBox");
+
+        // Auto-generate prefix and passcode suggestions as user types title
+        titleInput?.addEventListener("input", () => {
+            const words = titleInput.value.trim().split(/\s+/).filter(Boolean);
+            if (words.length > 0) {
+                let suggestedPrefix = words.map(w => w[0]).join("").toUpperCase();
+                if (suggestedPrefix.length < 3 && words[0].length >= 3) {
+                    suggestedPrefix = words[0].substring(0, 4).toUpperCase();
+                }
+                if (!prefixInput.value || prefixInput.dataset.auto === "true") {
+                    prefixInput.value = suggestedPrefix.substring(0, 5);
+                    prefixInput.dataset.auto = "true";
+                }
+
+                const cleanSlug = words[0].toLowerCase().replace(/[^a-z0-9]/g, "");
+                if (!passcodeInput.value || passcodeInput.dataset.auto === "true") {
+                    passcodeInput.value = cleanSlug + "2026";
+                    passcodeInput.dataset.auto = "true";
+                }
+            }
+        });
+
+        prefixInput?.addEventListener("input", () => {
+            prefixInput.dataset.auto = "false";
+            prefixInput.value = prefixInput.value.toUpperCase();
+        });
+
+        passcodeInput?.addEventListener("input", () => {
+            passcodeInput.dataset.auto = "false";
+        });
+
+        form?.addEventListener("submit", (e) => {
+            e.preventDefault();
+            errorBox.style.display = "none";
+
+            const title = titleInput.value.trim();
+            const category = categoryInput.value;
+            let prefix = prefixInput.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+            const passcode = passcodeInput.value.trim();
+            const capacity = capacityInput.value.trim() || "200 Participants";
+            const date = dateInput.value.trim() || "Coming Soon 2026";
+            const time = timeInput.value.trim() || "10:00 AM IST";
+            const venue = venueInput.value.trim() || "Main Auditorium";
+            const color = colorInput.value;
+            const icon = iconInput.value;
+            const desc = descInput.value.trim() || `${title} — Premier ${category.toLowerCase()} with live attendance check-in.`;
+
+            if (!prefix) {
+                prefix = "EVT";
+            }
+
+            // Generate clean URL slug
+            const slug = title
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-+|-+$/g, "");
+
+            const newEvent = {
+                id: slug,
+                prefix: prefix,
+                legacyPrefixes: [],
+                title: title,
+                category: category,
+                adminPage: `admin.html?event=${slug}`,
+                registerPage: `register.html?event=${slug}`,
+                adminPasscode: passcode,
+                badgeColor: "blue",
+                date: date,
+                time: time,
+                venue: venue,
+                capacity: capacity,
+                description: desc,
+                accentColor: color,
+                bgTint: color + "14",
+                borderColor: color,
+                icon: icon
+            };
+
+            try {
+                saveCustomEvent(newEvent);
+
+                // Show success view
+                successBox.style.display = "block";
+                form.style.display = "none";
+                document.getElementById("addEventCard").style.display = "none";
+
+                document.getElementById("createdEventSummary").innerHTML = 
+                    `Event <strong>${title}</strong> is active! Attendees receive <strong>${prefix}-xxx</strong> badges.`;
+                document.getElementById("createdPasscodeBadge").textContent = passcode;
+                document.getElementById("createdPrefixBadge").textContent = `${prefix}-xxx`;
+
+                document.getElementById("viewRegBtn").href = `register.html?event=${encodeURIComponent(slug)}`;
+                document.getElementById("viewAdminBtn").href = `admin.html?event=${encodeURIComponent(slug)}`;
+
+                successBox.scrollIntoView({ behavior: "smooth", block: "center" });
+
+            } catch (err) {
+                console.error("Save event error:", err);
+                errorBox.textContent = err.message || "Failed to create event. Please check inputs.";
+                errorBox.style.display = "block";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

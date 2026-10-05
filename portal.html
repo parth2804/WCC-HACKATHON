@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Access Portal | QR Event Check-In</title>
+    <link rel="stylesheet" href="css/style.css?v=festival2026">
+</head>
+
+<body>
+
+    <!-- ================= LIVE EVENT TICKER RIBBON (SLIDING RIGHT TO LEFT) ================= -->
+    <div class="event-ticker-bar" aria-label="Live Ongoing Events">
+        <div class="ticker-live-tag">
+            <span class="ticker-pulse-dot"></span> LIVE EVENTS
+        </div>
+        <div class="ticker-track-wrapper">
+            <div class="ticker-track">
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> INNOVEX Hackathon 2026 — 36H Sprint Active (Main Campus Auditorium)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> NextGen AI &amp; ML Summit — Keynotes Starting 10:30 AM (Hall B)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> CyberShield Security Conclave — Ethical Hacking &amp; CTF Drills</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> PixelCraft UX/UI Design Sprint — Workshop Registration Open</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge checkin">CHECK-IN</strong> Gate Desk Active — Fast QR Verification via Supabase</span>
+                <span class="ticker-separator">✦</span>
+                <!-- Duplicate for seamless infinite loop -->
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> INNOVEX Hackathon 2026 — 36H Sprint Active (Main Campus Auditorium)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> NextGen AI &amp; ML Summit — Keynotes Starting 10:30 AM (Hall B)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> CyberShield Security Conclave — Ethical Hacking &amp; CTF Drills</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> PixelCraft UX/UI Design Sprint — Workshop Registration Open</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge checkin">CHECK-IN</strong> Gate Desk Active — Fast QR Verification via Supabase</span>
+                <span class="ticker-separator">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= CORNER FESTIVAL DECOR ================= -->
+    <div class="memphis-decor" aria-hidden="true">
+        <div class="decor-top-left">
+            <div class="decor-tl-bar"></div>
+            <div class="decor-tl-square"></div>
+        </div>
+        <div class="decor-top-right">
+            <div class="decor-tr-circle"></div>
+            <div class="decor-tr-bar"></div>
+            <div class="decor-tr-square"></div>
+        </div>
+        <div class="decor-bottom-left"></div>
+        <div class="decor-bottom-right">
+            <div class="decor-br-triangle"></div>
+            <div class="decor-br-rect"></div>
+        </div>
+    </div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="main-header">
+        <div class="brand-header-flex">
+            <!-- High-Resolution Brand Logo Image -->
+            <img src="images/logo.png" alt="QR Event Check-In Logo" class="brand-logo-img">
+            <div>
+                <h1>QR Event Check-In</h1>
+                <p id="portalSubHeader">Event Access Portal</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html" class="home-btn">← All Events</a>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN PORTAL ================= -->
+    <main class="portal-container">
+
+        <!-- SELECTED EVENT HERO -->
+        <section class="portal-hero">
+            <span class="badge badge-pulse" id="eventBadge"><span class="pulse-dot"></span> EVENT ACCESS GATEWAY</span>
+            <h2 id="eventTitle"><span class="gradient-text">Event Check-In Portal</span></h2>
+            <p id="eventMeta">Select whether you are registering as a participant or managing attendance.</p>
+        </section>
+
+        <!-- ================= ROLE CARDS GRID ================= -->
+        <section class="portal-grid">
+
+            <!-- OPTION 1: NORMAL PERSON / PARTICIPANT -->
+            <div class="portal-card participant-card">
+                <div class="portal-card-body">
+                    <div class="portal-icon">🎫</div>
+                    <div style="margin-bottom: 8px;">
+                        <span class="badge" style="background: var(--gradient-electric); font-size: 0.7rem;">ATTENDEE PASS</span>
+                    </div>
+                    <h3>Event Participant</h3>
+                    <p>Register for this event, enter your details, and instantly receive your unique QR admission pass.</p>
+
+                    <ul class="portal-perks">
+                        <li>
+                            <span class="check-icon" style="background: var(--gradient-electric); color: #FFFFFF;">✓</span>
+                            <span>Quick 1-minute registration</span>
+                        </li>
+                        <li>
+                            <span class="check-icon" style="background: var(--gradient-electric); color: #FFFFFF;">✓</span>
+                            <span>Automatic Participant ID generation</span>
+                        </li>
+                        <li>
+                            <span class="check-icon" style="background: var(--gradient-electric); color: #FFFFFF;">✓</span>
+                            <span>Downloadable digital QR code pass</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a id="participantBtn" href="register.html" class="primary-btn">
+                    Register as Participant →
+                </a>
+            </div>
+
+            <!-- OPTION 2: ADMIN / GATE SCANNER -->
+            <div class="portal-card admin-card">
+                <div class="portal-card-body">
+                    <div class="portal-icon">🛡️</div>
+                    <div style="margin-bottom: 8px;">
+                        <span class="badge" style="background: var(--gradient-emerald); font-size: 0.7rem;">GATE OPERATIONS</span>
+                    </div>
+                    <h3>Event Administrator</h3>
+                    <p>Open the gate scanner, verify participant entry passes with camera scanning, and track live attendees.</p>
+
+                    <ul class="portal-perks">
+                        <li>
+                            <span class="check-icon" style="background: var(--gradient-emerald); color: #FFFFFF;">✓</span>
+                            <span>Live camera-based QR scanner</span>
+                        </li>
+                        <li>
+                            <span class="check-icon" style="background: var(--gradient-emerald); color: #FFFFFF;">✓</span>
+                            <span>Real-time attendee analytics & counters</span>
+                        </li>
+                        <li>
+                            <span class="check-icon" style="background: var(--gradient-emerald); color: #FFFFFF;">✓</span>
+                            <span>Participant search & manual check-in</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a id="adminBtn" href="admin.html" class="secondary-btn">
+                    Enter Admin Dashboard →
+                </a>
+            </div>
+
+        </section>
+
+        <!-- BACK LINK -->
+        <div style="text-align: center; margin-top: 35px;">
+            <a href="index.html" class="home-btn">← Choose a Different Event</a>
+        </div>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>© 2026 QR Event Check-In System</p>
+    </footer>
+
+    <!-- SCRIPT TO LOAD EVENT CONTEXT -->
+    <script type="module">
+        import { getEventById } from "./js/events.js";
+
+        const params = new URLSearchParams(window.location.search);
+        const eventId = params.get("event") || params.get("eventId") || "innovex-hackathon-2026";
+        const currentEvent = getEventById(eventId);
+
+        document.getElementById("eventTitle").innerHTML = `<span class="gradient-text">${currentEvent.title}</span>`;
+        document.getElementById("eventBadge").innerHTML = `<span class="pulse-dot"></span> ${currentEvent.category.toUpperCase()} • ACCESS GATEWAY`;
+        document.getElementById("eventMeta").textContent = `${currentEvent.date} • ${currentEvent.venue}`;
+        document.getElementById("portalSubHeader").textContent = currentEvent.title;
+
+        // Route buttons directly to the separate dedicated pages
+        document.getElementById("participantBtn").href = currentEvent.registerPage || `register.html?event=${encodeURIComponent(currentEvent.id)}`;
+        document.getElementById("adminBtn").href = currentEvent.adminPage || `admin.html?event=${encodeURIComponent(currentEvent.id)}`;
+    </script>
+
+</body>
+
+</html>

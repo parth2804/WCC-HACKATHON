@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Event Check-In | Explore Events & Passes</title>
+    <link rel="stylesheet" href="css/style.css?v=festival2026">
+</head>
+
+<body>
+
+    <!-- ================= LIVE EVENT TICKER RIBBON (SLIDING RIGHT TO LEFT) ================= -->
+    <div class="event-ticker-bar" aria-label="Live Ongoing Events">
+        <div class="ticker-live-tag">
+            <span class="ticker-pulse-dot"></span> LIVE EVENTS
+        </div>
+        <div class="ticker-track-wrapper">
+            <div class="ticker-track">
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> INNOVEX Hackathon 2026 — 36H Sprint Active (Main Campus Auditorium)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> NextGen AI &amp; ML Summit — Keynotes Starting 10:30 AM (Hall B)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> CyberShield Security Conclave — Ethical Hacking &amp; CTF Drills</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> PixelCraft UX/UI Design Sprint — Workshop Registration Open</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge checkin">CHECK-IN</strong> Gate Desk Active — Fast QR Verification via Supabase</span>
+                <span class="ticker-separator">✦</span>
+                <!-- Duplicate for seamless infinite loop -->
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> INNOVEX Hackathon 2026 — 36H Sprint Active (Main Campus Auditorium)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> NextGen AI &amp; ML Summit — Keynotes Starting 10:30 AM (Hall B)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> CyberShield Security Conclave — Ethical Hacking &amp; CTF Drills</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> PixelCraft UX/UI Design Sprint — Workshop Registration Open</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge checkin">CHECK-IN</strong> Gate Desk Active — Fast QR Verification via Supabase</span>
+                <span class="ticker-separator">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= CORNER FESTIVAL DECOR ================= -->
+    <div class="memphis-decor" aria-hidden="true">
+        <div class="decor-top-left">
+            <div class="decor-tl-bar"></div>
+            <div class="decor-tl-square"></div>
+        </div>
+        <div class="decor-top-right">
+            <div class="decor-tr-circle"></div>
+            <div class="decor-tr-bar"></div>
+            <div class="decor-tr-square"></div>
+        </div>
+        <div class="decor-bottom-left"></div>
+        <div class="decor-bottom-right">
+            <div class="decor-br-triangle"></div>
+            <div class="decor-br-rect"></div>
+        </div>
+    </div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="main-header">
+        <div class="brand-header-flex">
+            <!-- High-Resolution Brand Logo Image -->
+            <img src="images/logo.png" alt="QR Event Check-In Logo" class="brand-logo-img">
+            <div>
+                <h1>QR Event Check-In</h1>
+                <p>Events & Gate Operations Portal</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="add-event.html" class="primary-btn" style="padding: 9px 18px; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px;">
+                <span>✨</span> + Add Event
+            </a>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN EVENTS LISTING ================= -->
+    <main class="events-page-container">
+
+        <!-- HERO SECTION -->
+        <section class="events-hero">
+            <span class="badge badge-pulse"><span class="pulse-dot"></span> LIVE 2026 EVENT PASSES</span>
+            <h2><span class="gradient-text">Choose Your Event</span> & Enter Gateway</h2>
+            <p>Select an event below to register for your unique QR entry credential or manage gate check-ins.</p>
+        </section>
+
+        <!-- CATEGORY FILTERS -->
+        <div class="events-filter-bar" id="categoryFilterBar">
+            <button class="filter-pill active" data-category="all">✨ All Events</button>
+            <button class="filter-pill" data-category="Hackathon">⚡ Hackathons</button>
+            <button class="filter-pill" data-category="Conference">🧠 Conferences</button>
+            <button class="filter-pill" data-category="Workshop">🛡️ Workshops</button>
+            <button class="filter-pill" data-category="Design">🎨 Design Sprints</button>
+        </div>
+
+        <!-- EVENTS GRID -->
+        <section class="events-grid" id="eventsGrid">
+
+            <!-- EVENT 1: INNOVEX HACKATHON -->
+            <article class="event-card event-hackathon" data-category="Hackathon">
+                <!-- Banner: Direct text over background, NO text box -->
+                <div class="event-card-banner">
+                    <svg class="event-banner-art" viewBox="0 0 500 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="hackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#1E1B4B"/>
+                                <stop offset="40%" stop-color="#3730A3"/>
+                                <stop offset="80%" stop-color="#4F46E5"/>
+                                <stop offset="100%" stop-color="#7C3AED"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="500" height="140" fill="url(#hackGrad)"/>
+                        <circle cx="440" cy="30" r="50" fill="#06B6D4" opacity="0.25"/>
+                        <circle cx="50" cy="110" r="40" fill="#FF3366" opacity="0.2"/>
+                        <polygon points="450,90 470,125 430,125" fill="#F59E0B" opacity="0.3"/>
+                        <rect x="30" y="20" width="70" height="70" rx="14" fill="#06B6D4" opacity="0.12"/>
+                    </svg>
+                    <!-- Direct title over background (no text box) -->
+                    <div class="banner-direct-title">INNOVEX HACKATHON 2026</div>
+                </div>
+
+                <!-- Perforated Ticket Divider -->
+                <div class="ticket-divider">
+                    <div class="ticket-notch-left"></div>
+                    <div class="ticket-dashed-line"></div>
+                    <div class="ticket-notch-right"></div>
+                </div>
+
+                <div class="event-card-body">
+                    <div>
+                        <div class="event-card-header">
+                            <span class="badge" style="background: var(--gradient-electric);">⚡ HACKATHON</span>
+                            <span class="callout-pill" style="font-size: 0.8rem; background: rgba(79, 70, 229, 0.12); color: #4F46E5; border-color: rgba(79, 70, 229, 0.3);">🔥 300 Seats</span>
+                        </div>
+                        <h3 class="event-card-title">INNOVEX Hackathon 2026</h3>
+                        <p class="event-card-desc">36-hour sprint building breakthrough web, cloud, and open-source applications with industry mentors.</p>
+                        <ul class="event-meta-list">
+                            <li class="event-meta-item">
+                                <span class="event-meta-icon" style="background: rgba(79, 70, 229, 0.12); color: #4F46E5;">📅</span>
+                                <span>March 15-16, 2026 • 09:00 AM IST</span>
+                            </li>
+                            <li class="event-meta-item">
+                                <span class="event-meta-icon" style="background: rgba(79, 70, 229, 0.12); color: #4F46E5;">📍</span>
+                                <span>Tech Auditorium, Main Campus</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="portal.html?eventId=innovex-hackathon-2026" class="primary-btn">
+                        Get Event Pass →
+                    </a>
+                </div>
+            </article>
+
+            <!-- EVENT 2: NEXTGEN AI & ML SUMMIT -->
+            <article class="event-card event-conference" data-category="Conference">
+                <!-- Banner: Direct text over background, NO text box -->
+                <div class="event-card-banner">
+                    <svg class="event-banner-art" viewBox="0 0 500 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#064E3B"/>
+                                <stop offset="40%" stop-color="#065F46"/>
+                                <stop offset="80%" stop-color="#059669"/>
+                                <stop offset="100%" stop-color="#14B8A6"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="500" height="140" fill="url(#aiGrad)"/>
+                        <circle cx="80" cy="40" r="55" fill="#06B6D4" opacity="0.25"/>
+                        <circle cx="430" cy="100" r="45" fill="#F59E0B" opacity="0.2"/>
+                        <rect x="370" y="20" width="60" height="60" rx="12" fill="#FFFFFF" opacity="0.1"/>
+                    </svg>
+                    <!-- Direct title over background (no text box) -->
+                    <div class="banner-direct-title">NEXTGEN AI &amp; ML SUMMIT</div>
+                </div>
+
+                <!-- Perforated Ticket Divider -->
+                <div class="ticket-divider">
+                    <div class="ticket-notch-left"></div>
+                    <div class="ticket-dashed-line"></div>
+                    <div class="ticket-notch-right"></div>
+                </div>
+
+                <div class="event-card-body">
+                    <div>
+                        <div class="event-card-header">
+                            <span class="badge" style="background: var(--gradient-emerald);">🧠 KEYNOTE SUMMIT</span>
+                            <span class="callout-pill" style="font-size: 0.8rem; background: rgba(16, 185, 129, 0.12); color: #059669; border-color: rgba(16, 185, 129, 0.3);">⚡ 250 Seats</span>
+                        </div>
+                        <h3 class="event-card-title">NextGen AI & ML Summit</h3>
+                        <p class="event-card-desc">Explore the frontiers of deep learning, generative AI, and autonomous agent frameworks with keynotes.</p>
+                        <ul class="event-meta-list">
+                            <li class="event-meta-item">
+                                <span class="event-meta-icon" style="background: rgba(16, 185, 129, 0.12); color: #059669;">📅</span>
+                                <span>March 22, 2026 • 10:30 AM IST</span>
+                            </li>
+                            <li class="event-meta-item">
+                                <span class="event-meta-icon" style="background: rgba(16, 185, 129, 0.12); color: #059669;">📍</span>
+                                <span>Grand Convention Center, Hall B</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="portal.html?eventId=nextgen-ai-summit" class="primary-btn">
+                        Get Event Pass →
+                    </a>
+                </div>
+            </article>
+
+            <!-- EVENT 3: CYBERSHIELD SECURITY CONCLAVE -->
+            <article class="event-card event-workshop" data-category="Workshop">
+                <!-- Banner: Direct text over background, NO text box -->
+                <div class="event-card-banner">
+                    <svg class="event-banner-art" viewBox="0 0 500 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#4C0519"/>
+                                <stop offset="40%" stop-color="#881337"/>
+                                <stop offset="80%" stop-color="#BE123C"/>
+                                <stop offset="100%" stop-color="#FF3366"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="500" height="140" fill="url(#cyberGrad)"/>
+                        <circle cx="430" cy="40" r="50" fill="#F59E0B" opacity="0.25"/>
+                        <rect x="40" y="25" width="70" height="70" rx="14" fill="#FFFFFF" opacity="0.12"/>
+                        <polygon points="80,100 100,125 60,125" fill="#FFB800" opacity="0.25"/>
+                    </svg>
+                    <!-- Direct title over background (no text box) -->
+                    <div class="banner-direct-title">CYBERSHIELD CONCLAVE</div>
+                </div>
+
+                <!-- Perforated Ticket Divider -->
+                <div class="ticket-divider">
+                    <div class="ticket-notch-left"></div>
+                    <div class="ticket-dashed-line"></div>
+                    <div class="ticket-notch-right"></div>
+                </div>
+
+                <div class="event-card-body">
+                    <div>
+                        <div class="event-card-header">
+                            <span class="badge" style="background: var(--gradient-primary);">🛡️ LIVE CTF DRILL</span>
+                            <span class="callout-pill" style="font-size: 0.8rem; background: rgba(255, 51, 102, 0.12); color: #E11D48; border-color: rgba(255, 51, 102, 0.3);">🔥 150 Seats</span>
+                        </div>
+                        <h3 class="event-card-title">CyberShield Security Conclave</h3>
+                        <p class="event-card-desc">Hands-on threat intelligence, ethical hacking drills, and infrastructure vulnerability defense.</p>
+                        <ul class="event-meta-list">
+                            <li class="event-meta-item">
+                                <span class="event-meta-icon" style="background: rgba(255, 51, 102, 0.12); color: #E11D48;">📅</span>
+                                <span>April 05, 2026 • 11:00 AM IST</span>
+                            </li>
+                            <li class="event-meta-item">
+                                <span class="event-meta-icon" style="background: rgba(255, 51, 102, 0.12); color: #E11D48;">📍</span>
+                                <span>Cyber Defense Lab, Science Wing</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="portal.html?eventId=cybershield-conclave" class="primary-btn">
+                        Get Event Pass →
+                    </a>
+                </div>
+            </article>
+
+            <!-- EVENT 4: PIXELCRAFT DESIGN SPRINT -->
+            <article class="event-card event-design" data-category="Design">
+                <!-- Banner: Direct text over background, NO text box -->
+                <div class="event-card-banner">
+                    <svg class="event-banner-art" viewBox="0 0 500 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="designGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#78350F"/>
+                                <stop offset="40%" stop-color="#B45309"/>
+                                <stop offset="80%" stop-color="#D97706"/>
+                                <stop offset="100%" stop-color="#F59E0B"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="500" height="140" fill="url(#designGrad)"/>
+                        <circle cx="75" cy="45" r="50" fill="#4F46E5" opacity="0.25"/>
+                        <circle cx="420" cy="85" r="50" fill="#EC4899" opacity="0.25"/>
+                        <rect x="360" y="25" width="60" height="60" rx="12" fill="#FFFFFF" opacity="0.12"/>
+                    </svg>
+                    <!-- Direct title over background (no text box) -->
+                    <div class="banner-direct-title">PIXELCRAFT DESIGN SPRINT</div>
+                </div>
+
+                <!-- Perforated Ticket Divider -->
+                <div class="ticket-divider">
+                    <div class="ticket-notch-left"></div>
+                    <div class="ticket-dashed-line"></div>
+                    <div class="ticket-notch-right"></div>
+                </div>
+
+                <div class="event-card-body">
+                    <div>
+                        <div class="event-card-header">
+                            <span class="badge" style="background: var(--gradient-sunset);">🎨 DESIGN SPRINT</span>
+                            <span class="callout-pill" style="font-size: 0.8rem; background: rgba(245, 158, 11, 0.12); color: #B45309; border-color: rgba(245, 158, 11, 0.3);">✨ 180 Seats</span>
+                        </div>
+                        <h3 class="event-card-title">PixelCraft UX/UI Design Sprint</h3>
+                        <p class="event-card-desc">Intensive product design sprint focusing on micro-interactions, user journeys, and design systems.</p>
+                        <ul class="event-meta-list">
+                            <li class="event-meta-item">
+                                <span class="event-meta-icon" style="background: rgba(245, 158, 11, 0.12); color: #B45309;">📅</span>
+                                <span>April 18, 2026 • 02:00 PM IST</span>
+                            </li>
+                            <li class="event-meta-item">
+                                <span class="event-meta-icon" style="background: rgba(245, 158, 11, 0.12); color: #B45309;">📍</span>
+                                <span>Innovation Hub, Studio 4</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="portal.html?eventId=pixelcraft-design-sprint" class="primary-btn">
+                        Get Event Pass →
+                    </a>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>© 2026 QR Event Check-In System</p>
+    </footer>
+
+    <!-- DYNAMIC EVENT LISTING & CATEGORY FILTER SCRIPT -->
+    <script type="module">
+        import { fetchAllEvents } from "./js/events.js";
+
+        const grid = document.getElementById("eventsGrid");
+        const allEvents = await fetchAllEvents();
+        const staticEventIds = ["innovex-hackathon-2026", "nextgen-ai-summit", "cybershield-conclave", "pixelcraft-design-sprint"];
+        const customEvents = allEvents.filter(e => !staticEventIds.includes(e.id));
+
+        // Render any user-created custom events dynamically
+        customEvents.forEach(evt => {
+            const card = document.createElement("article");
+            card.className = "event-card";
+            card.setAttribute("data-category", evt.category);
+            card.style.borderColor = evt.borderColor || "#3F66B5";
+
+            card.innerHTML = `
+                <div class="event-card-banner" style="background: linear-gradient(135deg, #0F172A 0%, ${evt.borderColor || "#3F66B5"} 100%);">
+                    <span class="event-banner-badge" style="background: var(--gradient-electric); color: #fff;">
+                        ${evt.icon || "✨"} ${evt.category.toUpperCase()}
+                    </span>
+                    <div class="banner-direct-title">${evt.title.toUpperCase()}</div>
+                </div>
+                <div class="ticket-divider">
+                    <div class="ticket-notch-left"></div>
+                    <div class="ticket-dots"></div>
+                    <div class="ticket-notch-right"></div>
+                </div>
+                <div class="event-card-body">
+                    <div class="event-desc-box">
+                        <p class="event-description">${evt.description || ""}</p>
+                        <ul class="event-meta-list">
+                            <li class="event-meta-item">
+                                <span class="event-meta-icon" style="background: rgba(79, 70, 229, 0.12); color: #4F46E5;">📅</span>
+                                <span>${evt.date} • ${evt.time}</span>
+                            </li>
+                            <li class="event-meta-item">
+                                <span class="event-meta-icon" style="background: rgba(79, 70, 229, 0.12); color: #4F46E5;">📍</span>
+                                <span>${evt.venue}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="portal.html?eventId=${encodeURIComponent(evt.id)}" class="primary-btn">
+                        Get Event Pass →
+                    </a>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Category filter interaction
+        const filterPills = document.querySelectorAll(".filter-pill");
+        filterPills.forEach(pill => {
+            pill.addEventListener("click", () => {
+                filterPills.forEach(p => p.classList.remove("active"));
+                pill.classList.add("active");
+
+                const category = pill.getAttribute("data-category");
+                const allCards = document.querySelectorAll(".event-card");
+
+                allCards.forEach(card => {
+                    if (category === "all" || card.getAttribute("data-category") === category) {
+                        card.style.display = "flex";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

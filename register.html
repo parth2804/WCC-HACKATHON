@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Event Registration | QR Check-In</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css?v=festival2026"
+    >
+</head>
+
+
+<body>
+
+    <!-- ================= LIVE EVENT TICKER RIBBON (SLIDING RIGHT TO LEFT) ================= -->
+    <div class="event-ticker-bar" aria-label="Live Ongoing Events">
+        <div class="ticker-live-tag">
+            <span class="ticker-pulse-dot"></span> LIVE EVENTS
+        </div>
+        <div class="ticker-track-wrapper">
+            <div class="ticker-track">
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> INNOVEX Hackathon 2026 — 36H Sprint Active (Main Campus Auditorium)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> NextGen AI &amp; ML Summit — Keynotes Starting 10:30 AM (Hall B)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> CyberShield Security Conclave — Ethical Hacking &amp; CTF Drills</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> PixelCraft UX/UI Design Sprint — Workshop Registration Open</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge checkin">CHECK-IN</strong> Gate Desk Active — Fast QR Verification via Supabase</span>
+                <span class="ticker-separator">✦</span>
+                <!-- Duplicate for seamless infinite loop -->
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> INNOVEX Hackathon 2026 — 36H Sprint Active (Main Campus Auditorium)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> NextGen AI &amp; ML Summit — Keynotes Starting 10:30 AM (Hall B)</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge live">LIVE</strong> CyberShield Security Conclave — Ethical Hacking &amp; CTF Drills</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge upcoming">UPCOMING</strong> PixelCraft UX/UI Design Sprint — Workshop Registration Open</span>
+                <span class="ticker-separator">✦</span>
+                <span class="ticker-item"><strong class="ticker-badge checkin">CHECK-IN</strong> Gate Desk Active — Fast QR Verification via Supabase</span>
+                <span class="ticker-separator">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MUTED MEMPHIS CORNER DECOR ================= -->
+    <div class="memphis-decor" aria-hidden="true">
+        <div class="decor-top-left">
+            <div class="decor-tl-bar"></div>
+            <div class="decor-tl-square"></div>
+        </div>
+        <div class="decor-top-right">
+            <div class="decor-tr-circle"></div>
+            <div class="decor-tr-bar"></div>
+            <div class="decor-tr-square"></div>
+        </div>
+        <div class="decor-bottom-left"></div>
+        <div class="decor-bottom-right">
+            <div class="decor-br-triangle"></div>
+            <div class="decor-br-rect"></div>
+        </div>
+    </div>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="main-header">
+
+        <div class="brand-header-flex">
+            <!-- High-Resolution Brand Logo Image -->
+            <img src="images/logo.png" alt="QR Event Check-In Logo" class="brand-logo-img">
+            <div>
+                <h1>QR Event Check-In</h1>
+                <p>Event Registration</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html" class="home-btn">← Events</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="registration-container">
+
+        <!-- ACTIVE EVENT BANNER -->
+        <div class="active-event-banner" id="activeEventBanner">
+            <div class="active-event-info">
+                <span class="active-event-badge" id="bannerBadge">EVENT</span>
+                <span class="active-event-title" id="bannerTitle">INNOVEX Hackathon 2026</span>
+            </div>
+            <a href="index.html" class="active-event-switch">Switch Event</a>
+        </div>
+
+
+        <!-- ================= REGISTRATION CARD ================= -->
+
+        <section
+            class="registration-card"
+            id="registrationCard"
+        >
+
+            <div class="section-heading">
+
+                <span class="badge badge-pulse">
+                    <span class="pulse-dot"></span> OFFICIAL PASS 2026
+                </span>
+
+                <h2>
+                    <span class="gradient-text">Attendee Registration</span>
+                </h2>
+
+                <p>
+                    Fill in your details to receive
+                    your unique event QR code admission pass.
+                </p>
+
+            </div>
+
+
+            <!-- ERROR MESSAGE -->
+
+            <div
+                id="errorBox"
+                class="message error"
+                style="display: none;"
+            ></div>
+
+
+            <!-- ================= FORM ================= -->
+
+            <form id="registrationForm">
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@email.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ROLL NUMBER -->
+
+                <div class="form-group">
+
+                    <label for="rollNumber">
+                        Roll Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="rollNumber"
+                        placeholder="Enter your roll number"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- COLLEGE -->
+
+                <div class="form-group">
+
+                    <label for="college">
+                        College / University
+                    </label>
+
+                    <input
+                        type="text"
+                        id="college"
+                        placeholder="Enter your college"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ROLE -->
+
+                <div class="form-group">
+
+                    <label for="role">
+                        Applied Role
+                    </label>
+
+                    <select
+                        id="role"
+                        required
+                    >
+
+                        <option value="">
+                            Select your role
+                        </option>
+
+                        <option value="Web Development">
+                            Web Development
+                        </option>
+
+                        <option value="AI/ML">
+                            AI / ML
+                        </option>
+
+                        <option value="Cyber Security">
+                            Cyber Security
+                        </option>
+
+                        <option value="App Development">
+                            App Development
+                        </option>
+
+                        <option value="UI/UX">
+                            UI / UX
+                        </option>
+
+                        <option value="Management">
+                            Management
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="primary-btn register-btn"
+                >
+                    Register
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= SUCCESS CARD ================= -->
+
+        <section
+            id="successBox"
+            class="success-card"
+            style="display: none;"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Registration Successful!
+            </h2>
+
+            <p>
+                Your unique participant QR code
+                has been generated.
+            </p>
+
+
+            <!-- PARTICIPANT ID -->
+
+            <div class="participant-id-box">
+
+                <span>
+                    Participant ID
+                </span>
+
+                <strong id="participantId">
+                    -
+                </strong>
+
+            </div>
+
+
+            <!-- QR CODE -->
+
+            <div
+                id="qrcode"
+                class="qrcode-container"
+            ></div>
+
+
+            <p class="qr-instruction">
+
+                Save this QR code and show it at
+                the event check-in counter.
+
+            </p>
+
+
+            <!-- DOWNLOAD -->
+
+            <button
+                id="downloadQR"
+                class="primary-btn"
+                type="button"
+            >
+                Download QR Code
+            </button>
+
+
+            <!-- REGISTER ANOTHER -->
+
+            <button
+                class="secondary-btn"
+                type="button"
+                onclick="location.reload()"
+            >
+                Register Another Participant
+            </button>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= QR CODE LIBRARY ================= -->
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+    ></script>
+
+
+    <!-- ================= SUPABASE / REGISTER JS ================= -->
+
+    <script
+        type="module"
+        src="js/register.js"
+    ></script>
+
+    <!-- EVENT CONTEXT SCRIPT -->
+    <script type="module">
+        import { getEventById } from "./js/events.js";
+
+        const params = new URLSearchParams(window.location.search);
+        const eventId = params.get("event") || params.get("eventId") || "innovex-hackathon-2026";
+        const currentEvent = getEventById(eventId);
+
+        const bannerBadge = document.getElementById("bannerBadge");
+        const bannerTitle = document.getElementById("bannerTitle");
+
+        if (bannerBadge) bannerBadge.textContent = currentEvent.category.toUpperCase();
+        if (bannerTitle) bannerTitle.textContent = currentEvent.title;
+
+        // Store selected event for registration script
+        window.CURRENT_EVENT = currentEvent;
+    </script>
+
+</body>
+
+</html>
+
